@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
     add-apt-repository -y ppa:ansible/ansible
     apt-get update
     apt-get -y dist-upgrade
-    apt-get install -y ansible python-passlib python-netaddr python-augeas python-pip git
+    apt-get install -y ansible python-passlib python-netaddr python-augeas python-pip git vim
     pip install debops
     su vagrant -c debops-update
     apt-get install -y curl unzip
