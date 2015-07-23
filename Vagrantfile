@@ -14,7 +14,7 @@ Vagrant.configure(2) do |config|
   config.vm.define :development do |t|
   end
 
-  ports = (3000..3010).to_a + [1080, 8080, 9200, 9292]
+  ports = (3000..3010).to_a + [1080, 4440, 8080, 9200, 9292]
   ports.each do |port|
     config.vm.network "forwarded_port", guest: port, host: port
   end
@@ -44,6 +44,10 @@ Vagrant.configure(2) do |config|
     mkdir -p ~/key/third_party/linux/terraform
     unzip -o terraform_0.6.0_linux_amd64.zip -d ~/key/third_party/linux/terraform/
     rm terraform_0.6.0_linux_amd64.zip
+
+    curl -sS -O -L http://stedolan.github.io/jq/download/linux64/jq
+    chmod 755 jq
+    mv jq ~/key/third_party/linux/
 
     echo '. ~/work/environment' >> ~/.bashrc
     cd ~/work/ansible && ansible-playbook -i 'localhost,' -u vagrant -s -c local development.yml
