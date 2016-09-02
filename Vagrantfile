@@ -14,7 +14,7 @@ Vagrant.configure(2) do |config|
   config.vm.define :development do |t|
   end
 
-  ports = (3000..3010).to_a + [1080, 4440, 5000, 8080, 9200, 9292]
+  ports = (3000..3010).to_a + [1080, 1723, 4440, 5000, 8080, 9200, 9292, 35729]
   ports.each do |port|
     config.vm.network "forwarded_port", guest: port, host: port
   end
